@@ -1,7 +1,7 @@
 package leetkit
 
-// ParseIntsMatrix is a shorthand for Parse[[][]int](s).
-func ParseIntsMatrix(s string) [][]int { return Parse[[][]int](s) }
+// ParseIntMatrix is a shorthand for Parse[[][]int](s).
+func ParseIntMatrix(s string) [][]int { return Parse[[][]int](s) }
 
 // ParseStringMatrix is a shorthand for Parse[[][]string](s).
 func ParseStringMatrix(s string) [][]string { return Parse[[][]string](s) }
