@@ -1,4 +1,4 @@
-# LeetKit for Go
+# LeetKit for Go [![Go Reference](https://pkg.go.dev/badge/github.com/alex-telpis/leetkit.svg)](https://pkg.go.dev/github.com/alex-telpis/leetkit)
 
 So, you've decided to take the **Go**-ing-against-the-grain route on LeetCode?
 Well, LeetKit is here to make your life a little less painful.
