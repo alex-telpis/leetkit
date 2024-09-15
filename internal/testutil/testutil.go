@@ -26,6 +26,14 @@ func CheckVal[A comparable](t *testing.T, want A, got A) {
 	}
 }
 
+func CheckNotEqual[A comparable](t *testing.T, want A, got A) {
+	t.Helper()
+
+	if want == got {
+		t.Errorf("want not equal: %v, %v", want, got)
+	}
+}
+
 func CheckSlice[A comparable](t *testing.T, want []A, got []A) {
 	t.Helper()
 
