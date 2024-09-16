@@ -36,7 +36,6 @@ func tryParse[T any](s string) (T, error) {
 // The name is referring to the fmt.Sprint function.
 // For usage simplicity, Sprint panics instead of returning an error.
 func Sprint(v any) string {
-	fmt.Sprint()
 	res, err := trySprint(v)
 	if err != nil {
 		panic("failed to serialize: " + err.Error())
