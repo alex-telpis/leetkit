@@ -1,8 +1,8 @@
 package leetkit
 
 // IntMinHeap is a Min-Heap implementation for integers.
-// It allows you to quickly test heap-based solutions while working on problems,
-// but you'll need to copy this code before submitting it.
+// It allows you to quickly test heap-based solutions.
+// However, after testing, you'll need to copy this code and include it in your submission.
 type IntMinHeap []int
 
 func (h IntMinHeap) Len() int               { return len(h) }
@@ -18,8 +18,8 @@ func (h *IntMinHeap) Pop() any {
 }
 
 // IntMaxHeap is a Max-Heap implementation for integers.
-// It allows you to quickly test heap-based solutions while working on problems,
-// but you'll need to copy this code before submitting it.
+// It allows you to quickly test heap-based solutions.
+// However, after testing you'll need to copy this code and include it in your submission.
 type IntMaxHeap []int
 
 func (h IntMaxHeap) Len() int               { return len(h) }
