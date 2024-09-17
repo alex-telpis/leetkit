@@ -12,7 +12,7 @@ and functions for parsing example inputs.
 go get -u github.com/alex-telpis/leetkit
 ```
 
-## Usage
+## Basic Usage
 
 0. ~~Consider using Python.~~
 1. Define a struct in your solution using a type alias, e.g., `type TreeNode = leetkit.TreeNode`.
@@ -46,7 +46,9 @@ func isSubPath(head *ListNode, root *TreeNode) bool {
 }
 ```
 
-Trying to use a heap in Go is a significant time investment 🥲
+## Heaps
+
+Trying to use a heap in Go is a significant time investment 🥲.
 To quickly validate your heap-based solution, you can use the built-in `IntMinHeap`
 and `IntMaxHeap`. Just don't forget to include the heap in your LeetCode submission.
 
