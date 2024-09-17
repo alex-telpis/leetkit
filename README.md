@@ -6,6 +6,12 @@ This library simplifies working with complex data structures like
 linked lists, trees, matrices, providing common LeetCode type definitions
 and functions for parsing example inputs.
 
+## Installation
+
+```bash
+go get -u github.com/alex-telpis/leetkit
+```
+
 ## Usage
 
 0. ~~Consider using Python.~~
@@ -16,7 +22,7 @@ and functions for parsing example inputs.
 Example:
 
 ```go
-// https://leetcode.com/problems/linked-list-in-binary-tree/description/
+// https://leetcode.com/problems/linked-list-in-binary-tree
 package main
 
 import "github.com/alex-telpis/leetkit"
@@ -40,8 +46,47 @@ func isSubPath(head *ListNode, root *TreeNode) bool {
 }
 ```
 
-## Installation
+Trying to use a heap in Go is a significant time investment 🥲
+To quickly validate your heap-based solution, you can use the built-in `IntMinHeap`
+and `IntMaxHeap`. Just don't forget to include the heap in your LeetCode submission.
 
-```bash
-go get -u github.com/alex-telpis/leetkit
+Example:
+
+```go
+// https://leetcode.com/problems/last-stone-weight
+package main
+
+import (
+    "container/heap"
+
+    "github.com/alex-telpis/leetkit"
+)
+
+func main() {
+    leetkit.Verify(1, lastStoneWeight([]int{2, 7, 4, 1, 8, 1}))
+}
+
+func lastStoneWeight(stones []int) int {
+    h := &leetkit.IntMaxHeap{} // use temporary implementation
+    *h= stones
+    heap.Init(h)
+
+    for {
+        switch h.Len() {
+        case 0:
+            return 0
+
+        case 1:
+            return (*h)[0]
+
+        default:
+            s1 := heap.Pop(h).(int)
+            s2 := heap.Pop(h).(int)
+
+            if s1 > s2 {
+                heap.Push(h, s1-s2)
+            }
+        }
+    }
+}
 ```
