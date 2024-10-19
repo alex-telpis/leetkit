@@ -42,7 +42,87 @@ func main() {
 // Your submission code begins here:
 
 func isSubPath(head *ListNode, root *TreeNode) bool {
-    return false
+    // ... solution
+
+    return true
+}
+```
+
+## Matrices
+
+`Parse<Int | String | Byte>Matrix` functions are available as convenient shortcuts
+to the generic `Parse()` function. The following example also demonstrates
+how the `Verify()` function works with the string representation of the expected
+result.
+
+Example:
+
+```go
+// https://leetcode.com/problems/spiral-matrix
+package main
+
+import (
+    "slices"
+
+    "github.com/alex-telpis/leetkit"
+)
+
+func main() {
+    leetkit.Verify(
+        "[1,2,3,6,9,8,7,4,5]",
+        spiralOrder(leetkit.ParseIntMatrix("[[1,2,3],[4,5,6],[7,8,9]]")),
+    )
+    leetkit.Verify(
+        "[1,2,3,4,8,12,11,10,9,5,6,7]",
+        spiralOrder(leetkit.ParseIntMatrix("[[1,2,3,4],[5,6,7,8],[9,10,11,12]]")),
+    )
+    leetkit.Verify(
+        "[1,2,3,4,8,12,16,15,14,13,9,5,6,7,11,10]",
+        spiralOrder(leetkit.ParseIntMatrix("[[1,2,3,4],[5,6,7,8],[9,10,11,12],[13,14,15,16]]")),
+    )
+}
+
+// Your submission code begins here:
+
+func spiralOrder(matrix [][]int) []int {
+    rMin, rMax := 0, len(matrix)-1
+    cMin, cMax := 0, len(matrix[0])-1
+
+    getCol := func(matrix [][]int, i int) []int {
+        res := make([]int, 0, len(matrix))
+        for r := rMin; r <= rMax; r++ {
+            res = append(res, matrix[r][i])
+        }
+
+        return res
+    }
+    res := make([]int, 0, len(matrix)*len(matrix[0]))
+
+    for i := 0; len(res) < cap(res); i++ {
+        switch i % 4 {
+        case 0: // left to right
+            res = append(res, matrix[rMin][cMin:cMax+1]...)
+            rMin++
+
+        case 1: // top to bottom
+            res = append(res, getCol(matrix, cMax)...)
+            cMax--
+
+        case 2: // right to leftrow
+            row := matrix[rMax][cMin : cMax+1]
+            slices.Reverse(row)
+            res = append(res, row...)
+            rMax--
+
+        case 3: // bottom to up
+            row := getCol(matrix, 0)
+            slices.Reverse(row)
+            res = append(res, row...)
+            cMin++
+        }
+    }
+
+    return res
 }
 ```
 
@@ -67,6 +147,9 @@ import (
 func main() {
     leetkit.Verify(1, lastStoneWeight([]int{2, 7, 4, 1, 8, 1}))
 }
+
+
+// Your submission code begins here:
 
 func lastStoneWeight(stones []int) int {
     h := &leetkit.IntMaxHeap{} // use temporary implementation
